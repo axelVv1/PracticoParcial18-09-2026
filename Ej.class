@@ -1,0 +1,102 @@
+#include <iostream>
+#include <initializer_list>
+using namespace std;
+
+class ListaEnlazada {
+private:
+    struct Nodo {
+        int dato;
+        Nodo* sig;
+    };
+    Nodo* cabeza;
+
+    // Invierte una lista y devuelve la nueva cabeza (iterativo, O(1) memoria)
+    static Nodo* invertir(Nodo* p) {
+        Nodo* previo = nullptr;
+        while (p) {
+            Nodo* siguiente = p->sig;
+            p->sig = previo;
+            previo = p;
+            p = siguiente;
+        }
+        return previo;
+    }
+
+public:
+    ListaEnlazada() : cabeza(nullptr) {}
+
+    ListaEnlazada(const ListaEnlazada&) = delete;
+    ListaEnlazada& operator=(const ListaEnlazada&) = delete;
+
+    ~ListaEnlazada() {
+        while (cabeza) {
+            Nodo* a = cabeza;
+            cabeza = cabeza->sig;
+            delete a;
+        }
+    }
+
+    void agregar(int x) {
+        Nodo* nuevo = new Nodo{x, nullptr};
+        if (!cabeza) { cabeza = nuevo; return; }
+        Nodo* p = cabeza;
+        while (p->sig) p = p->sig;
+        p->sig = nuevo;
+    }
+
+    bool esPalindromo() {
+        if (!cabeza || !cabeza->sig) return true;   // vacia o un nodo
+
+        // 1) Punto medio con dos punteros
+        Nodo* lento = cabeza;
+        Nodo* rapido = cabeza;
+        while (rapido->sig && rapido->sig->sig) {
+            lento = lento->sig;
+            rapido = rapido->sig->sig;
+        }
+
+        // 2) Invertir la segunda mitad
+        Nodo* segunda = invertir(lento->sig);
+        Nodo* colaInvertida = segunda;              
+
+        // 3) Comparar sin return anticipado
+        Nodo* primera = cabeza;
+        bool igual = true;
+        while (segunda) {
+            if (primera->dato != segunda->dato) igual = false;
+            primera = primera->sig;
+            segunda = segunda->sig;
+        }
+
+        // 4) Restaurar enlaces
+        lento->sig = invertir(colaInvertida);
+        return igual;
+    }
+
+    void imprimir() const {
+        if (!cabeza) { cout << "(vacia)"; return; }
+        for (Nodo* p = cabeza; p; p = p->sig)
+            cout << p->dato << (p->sig ? " -> " : "");
+    }
+};
+
+void probar(initializer_list<int> datos) {
+    ListaEnlazada l;
+    for (int x : datos) l.agregar(x);
+
+    cout << "Antes:   ";
+    l.imprimir();
+    cout << "\nResultado: " << (l.esPalindromo() ? "Es palindromo" : "No es palindromo");
+    cout << "\nDespues: ";
+    l.imprimir();
+    cout << "\n\n";
+}
+
+int main() {
+    probar({1, 2, 3, 2, 1});
+    probar({1, 2, 2, 1});
+    probar({1, 2, 3, 4});
+    probar({7});
+    probar({});
+    return 0;
+}
