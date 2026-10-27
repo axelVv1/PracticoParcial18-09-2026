@@ -22,7 +22,7 @@ private:
     }
 
 public:
-    ListaEnlazada() : cabeza(nullptr) {}
+    ListaEnlazada() : cabeza(nullptr) {}  // 3
 
     ListaEnlazada(const ListaEnlazada&) = delete;
     ListaEnlazada& operator=(const ListaEnlazada&) = delete;
@@ -75,8 +75,8 @@ public:
     }
 };
 
-void probar(initializer_list<int> datos) {
-    ListaEnlazada l;
+void probar(initializer_list<int> datos) {      //2
+    ListaEnlazada l;                            //2
     for (int x : datos) l.agregar(x);
 
     cout << "Antes:   ";
@@ -87,7 +87,7 @@ void probar(initializer_list<int> datos) {
     cout << "\n\n";
 }
 
-int main() {
+int main() {                               // 1
     probar({1, 2, 3, 2, 1});
     probar({1, 2, 2, 1});
     probar({1, 2, 3, 4});
