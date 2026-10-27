@@ -56,13 +56,13 @@ public:
         Nodo* segunda = invertir(lento->sig);
         Nodo* colaInvertida = segunda;              
 
-        Nodo* primera = cabeza;
+        Nodo* primera = cabeza;                       //5.2
         bool igual = true;
         while (segunda) {
             if (primera->dato != segunda->dato) igual = false;
             primera = primera->sig;
             segunda = segunda->sig;
-        }
+        }                                            //5.2
 
         lento->sig = invertir(colaInvertida);
         return igual;
