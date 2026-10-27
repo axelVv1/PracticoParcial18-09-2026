@@ -46,7 +46,6 @@ public:
     bool esPalindromo() {
         if (!cabeza || !cabeza->sig) return true;   // vacia o un nodo
 
-        // 1) Punto medio con dos punteros
         Nodo* lento = cabeza;
         Nodo* rapido = cabeza;
         while (rapido->sig && rapido->sig->sig) {
@@ -54,11 +53,9 @@ public:
             rapido = rapido->sig->sig;
         }
 
-        // 2) Invertir la segunda mitad
         Nodo* segunda = invertir(lento->sig);
         Nodo* colaInvertida = segunda;              
 
-        // 3) Comparar sin return anticipado
         Nodo* primera = cabeza;
         bool igual = true;
         while (segunda) {
@@ -67,7 +64,6 @@ public:
             segunda = segunda->sig;
         }
 
-        // 4) Restaurar enlaces
         lento->sig = invertir(colaInvertida);
         return igual;
     }
