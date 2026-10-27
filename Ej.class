@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 #include <initializer_list>
 using namespace std;
 
@@ -81,7 +81,7 @@ void probar(initializer_list<int> datos) {      //2
 
     cout << "Antes:   ";
     l.imprimir();                               //4
-    cout << "\nResultado: " << (l.esPalindromo() ? "Es palindromo" : "No es palindromo");
+    cout << "\nResultado: " << (l.esPalindromo() ? "Es palindromo" : "No es palindromo");  //5
     cout << "\nDespues: ";
     l.imprimir();
     cout << "\n\n";
