@@ -22,7 +22,7 @@ private:
     }
 
 public:
-    ListaEnlazada() : cabeza(nullptr) {}  //3
+    ListaEnlazada() : cabeza(nullptr) {}  //2
 
     ListaEnlazada(const ListaEnlazada&) = delete;
     ListaEnlazada& operator=(const ListaEnlazada&) = delete;
