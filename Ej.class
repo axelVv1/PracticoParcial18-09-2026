@@ -10,7 +10,7 @@ private:
     };
     Nodo* cabeza;
 
-    static Nodo* invertir(Nodo* p) {
+    static Nodo* invertir(Nodo* p) {       //5.2
         Nodo* previo = nullptr;
         while (p) {
             Nodo* siguiente = p->sig;
@@ -19,7 +19,7 @@ private:
             p = siguiente;
         }
         return previo;
-    }
+    }                                      //5.2
 
 public:
     ListaEnlazada() : cabeza(nullptr) {}  //2
@@ -53,16 +53,16 @@ public:
             rapido = rapido->sig->sig;
         }                                            //5.1
 
-        Nodo* segunda = invertir(lento->sig);
-        Nodo* colaInvertida = segunda;              
+        Nodo* segunda = invertir(lento->sig);        //5.2
+        Nodo* colaInvertida = segunda;              //5.2
 
-        Nodo* primera = cabeza;                       //5.2
+        Nodo* primera = cabeza;                     //5.3                 
         bool igual = true;
         while (segunda) {
             if (primera->dato != segunda->dato) igual = false;
             primera = primera->sig;
             segunda = segunda->sig;
-        }                                            //5.2
+        }                                           //5.3                      
 
         lento->sig = invertir(colaInvertida);
         return igual;
