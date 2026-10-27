@@ -10,7 +10,6 @@ private:
     };
     Nodo* cabeza;
 
-    // Invierte una lista y devuelve la nueva cabeza (iterativo, O(1) memoria)
     static Nodo* invertir(Nodo* p) {
         Nodo* previo = nullptr;
         while (p) {
