@@ -22,7 +22,7 @@ private:
     }
 
 public:
-    ListaEnlazada() : cabeza(nullptr) {}  // 3
+    ListaEnlazada() : cabeza(nullptr) {}  //3
 
     ListaEnlazada(const ListaEnlazada&) = delete;
     ListaEnlazada& operator=(const ListaEnlazada&) = delete;
@@ -44,7 +44,7 @@ public:
     }
 
     bool esPalindromo() {
-        if (!cabeza || !cabeza->sig) return true;   // vacia o un nodo
+        if (!cabeza || !cabeza->sig) return true;  
 
         Nodo* lento = cabeza;
         Nodo* rapido = cabeza;
@@ -87,7 +87,7 @@ void probar(initializer_list<int> datos) {      //2
     cout << "\n\n";
 }
 
-int main() {                               // 1
+int main() {                               //1
     probar({1, 2, 3, 2, 1});
     probar({1, 2, 2, 1});
     probar({1, 2, 3, 4});
