@@ -80,7 +80,7 @@ void probar(initializer_list<int> datos) {      //2
     for (int x : datos) l.agregar(x);           //3
 
     cout << "Antes:   ";
-    l.imprimir();
+    l.imprimir();                               //4
     cout << "\nResultado: " << (l.esPalindromo() ? "Es palindromo" : "No es palindromo");
     cout << "\nDespues: ";
     l.imprimir();
