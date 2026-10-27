@@ -35,7 +35,7 @@ public:
         }
     }
 
-    void agregar(int x) {
+    void agregar(int x) {                             //3
         Nodo* nuevo = new Nodo{x, nullptr};
         if (!cabeza) { cabeza = nuevo; return; }
         Nodo* p = cabeza;
@@ -77,7 +77,7 @@ public:
 
 void probar(initializer_list<int> datos) {      //2
     ListaEnlazada l;                            //2
-    for (int x : datos) l.agregar(x);
+    for (int x : datos) l.agregar(x);           //3
 
     cout << "Antes:   ";
     l.imprimir();
