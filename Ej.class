@@ -68,7 +68,7 @@ public:
         return igual;
     }
 
-    void imprimir() const {
+    void imprimir() const {                              //4
         if (!cabeza) { cout << "(vacia)"; return; }
         for (Nodo* p = cabeza; p; p = p->sig)
             cout << p->dato << (p->sig ? " -> " : "");
