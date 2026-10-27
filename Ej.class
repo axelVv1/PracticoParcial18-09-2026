@@ -43,7 +43,7 @@ public:
         p->sig = nuevo;
     }
 
-    bool esPalindromo() {
+    bool esPalindromo() {                             //5
         if (!cabeza || !cabeza->sig) return true;  
 
         Nodo* lento = cabeza;
@@ -51,7 +51,7 @@ public:
         while (rapido->sig && rapido->sig->sig) {
             lento = lento->sig;
             rapido = rapido->sig->sig;
-        }
+        }                                            //5
 
         Nodo* segunda = invertir(lento->sig);
         Nodo* colaInvertida = segunda;              
